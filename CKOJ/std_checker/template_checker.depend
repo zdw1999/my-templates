@@ -1,0 +1,37 @@
+# depslib dependency file v1.0
+1525187625 source:f:\my programs\c & c++\ckoj\template_checker\main.cpp
+	<bits/stdc++.h>
+	<zdwstd.h>
+	"data.h"
+	"std.h"
+	"solve.h"
+
+1525191983 f:\my programs\c & c++\ckoj\template_checker\data.h
+	<bits/stdc++.h>
+
+1525191794 f:\my programs\c & c++\ckoj\template_checker\std.h
+	<stdio.h>
+	<algorithm>
+	<assert.h>
+	<bitset>
+	<cmath>
+	<complex>
+	<deque>
+	<functional>
+	<iostream>
+	<limits.h>
+	<map>
+	<math.h>
+	<queue>
+	<set>
+	<stdlib.h>
+	<string.h>
+	<string>
+	<time.h>
+	<unordered_map>
+	<unordered_set>
+	<vector>
+
+1525192007 f:\my programs\c & c++\ckoj\template_checker\solve.h
+	<bits/stdc++.h>
+
