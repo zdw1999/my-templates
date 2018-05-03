@@ -21,18 +21,18 @@ std::map<ll,ll>M1,M2;
 ll A[N],n,a,b,t,ans;
 
 int main(){
-    M1.clear(); M2.clear();
-    memset(P,0,sizeof(P));
-    scanf("%lld%lld%lld",&n,&a,&b);
-    for(int i=1;i<=n;++i){
-        scanf("%lld%lld%lld",&t,&P[i].x,&P[i].y);
-        A[i]=a*P[i].x-P[i].y;
-    }
-    for(int i=1;i<=n;++i){
-        ++M1[P[i].x*(ll)1e9+P[i].y];
-        ++M2[A[i]];
-    }
-    for(int i=1;i<=n;++i)
-        ans+=M2[A[i]]-M1[P[i].x*(ll)1e9+P[i].y];
-    return !printf("%lld\n",ans);
+	M1.clear(); M2.clear();
+	memset(P,0,sizeof(P));
+	scanf("%lld%lld%lld",&n,&a,&b);
+	for(int i=1;i<=n;++i){
+		scanf("%lld%lld%lld",&t,&P[i].x,&P[i].y);
+		A[i]=a*P[i].x-P[i].y;
+	}
+	for(int i=1;i<=n;++i){
+		++M1[P[i].x*(ll)1e9+P[i].y];
+		++M2[A[i]];
+	}
+	for(int i=1;i<=n;++i)
+		ans+=M2[A[i]]-M1[P[i].x*(ll)1e9+P[i].y];
+	return !printf("%lld\n",ans);
 }

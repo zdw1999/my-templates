@@ -48,8 +48,8 @@ pll in[200050];
 
 map <ll, ll> Mx;
 int main() {
-    memset(in,0,sizeof(in));
-    Mx.clear();
+	memset(in,0,sizeof(in));
+	Mx.clear();
 	ll N, A, B, i, j;
 	scanf("%lld %lld %lld", &N, &A, &B);
 	for (i = 1; i <= N; i++) {
