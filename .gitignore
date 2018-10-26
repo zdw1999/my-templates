@@ -2,3 +2,5 @@
 *.o
 *.in
 *.out
+*.tar.gz
+*.zip
