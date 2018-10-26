@@ -29,7 +29,7 @@ namespace STD{
 #include "solve.h"
 #undef main
 }
-#define _TESTS_ 100
+#define _TESTS_ 10000
 
 namespace __checker{
 
@@ -75,31 +75,31 @@ int main(){
 
 		//Data
 		freopen(fin,"w",stdout);
-		//errmsg("Data #%d Spawning...\n",i);
+		errmsg("Data #%d Spawning...\n",i);
 		st=clock(); res=data();
-		//errmsg("Data #%d Spawned Successfully.\n",i);
-		//errmsg("Spawner Returned %d.\n",res);
-		//errmsg("Time Used: %dms.\n",clock()-st);
+		errmsg("Data #%d Spawned Successfully.\n",i);
+		errmsg("Spawner Returned %d.\n",res);
+		errmsg("Time Used: %dms.\n",clock()-st);
 		fclose(stdout);
 
 		//std
 		freopen(fin,"r",stdin);
 		freopen(fans,"w",stdout);
-		//errmsg("std Running on Test #%d...\n",i);
+		errmsg("std Running on Test #%d...\n",i);
 		st=clock(); res=STD::pstd();
-		//errmsg("std Running Done on Data #%d.\n",i);
-		//errmsg("std Returned %d.\n",res);
-		//errmsg("Time Used: %dms.\n",clock()-st);
+		errmsg("std Running Done on Data #%d.\n",i);
+		errmsg("std Returned %d.\n",res);
+		errmsg("Time Used: %dms.\n",clock()-st);
 		fclose(stdin); fclose(stdout);
 
 		//Solve
 		freopen(fin,"r",stdin);
 		freopen(fout,"w",stdout);
-		//errmsg("Solve Running on Test #%d...\n",i);
+		errmsg("Solve Running on Test #%d...\n",i);
 		st=clock(); res=sv::solve();
-		//errmsg("Solve Running Done on Data #%d.\n",i);
-		//errmsg("Solve Returned %d.\n",res);
-		//errmsg("Time Used: %dms.\n",clock()-st);
+		errmsg("Solve Running Done on Data #%d.\n",i);
+		errmsg("Solve Returned %d.\n",res);
+		errmsg("Time Used: %dms.\n",clock()-st);
 		fclose(stdin); fclose(stdout);
 
 		//Checker

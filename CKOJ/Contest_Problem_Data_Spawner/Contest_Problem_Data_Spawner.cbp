@@ -41,7 +41,21 @@
 		<Unit filename="Ddata.h" />
 		<Unit filename="E.h" />
 		<Unit filename="Edata.h" />
+		<Unit filename="F.h" />
+		<Unit filename="Fdata.h" />
+		<Unit filename="G.h" />
+		<Unit filename="Gdata.h" />
+		<Unit filename="H.h" />
+		<Unit filename="Hdata.h" />
+		<Unit filename="I.h" />
+		<Unit filename="Idata.h" />
+		<Unit filename="J.h" />
+		<Unit filename="Jdata.h" />
+		<Unit filename="K.h" />
+		<Unit filename="Kdata.h" />
+		<Unit filename="bigint.h" />
 		<Unit filename="run.cpp" />
+		<Unit filename="spawn_system.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

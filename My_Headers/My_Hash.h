@@ -7,11 +7,11 @@
 **************************************/
 
 #ifndef MY_HASH_H
-	
+
 	#define MY_HASH_H
-	
+
 	namespace zdw{
-		
+
 		template<class __A,class __B>
 		class Hash{
 		private:
@@ -33,8 +33,8 @@
 			}
 			void clear(){memset(O,0xff,sizeof(__A)*sz);}
 		};
-		
+
 	};
-	 
+
 #endif
 

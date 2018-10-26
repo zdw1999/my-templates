@@ -1,24 +1,23 @@
-#include <cstdio>
-#include <cstring>
-#include <cstdlib>
-
-namespace Data_C{
-	
-	const int MXN[3]={50,1000,2000};
-	const int MXM[3]={1000,10000,300000};
-	
-	void print(int nd){
-		int n,m;
-		n=nd<7?nd<4?MXN[0]:MXN[1]:MXN[2];
-		m=nd<7?nd<4?MXM[0]:MXM[1]:MXM[2];
-		printf("%d %d\n",n,m);
-		while(m--)printf("%llu %llu %llu %llu %s%llu\n",random(1,n),random(1,n),random(1,n),random(1,n),random(0,1)?"-":"",random()&0x7fLLU);
-		
-	}
-	
-};
+#include <bits/stdc++.h>
+#define ll long long
 
 int main(){
-	Data_C::print(now_data_num);
+
+	int T=10000; ll x1,x2,y1,y2;
+	ll xx=now_data_num<6?10:1e18;
+	//errmsg("%lld\n",xx);
+	printf("%d\n",T);
+	printf("1 1 0 0\n");
+	printf("2 2 -2 0\n");
+	for(int i=3;i<=T;++i){
+		x1=random(0,xx); y1=random(0,xx);
+		x2=random(0,xx); y2=random(0,xx);
+		if(random()&1)x1*=-1;
+		if(random()&1)y1*=-1;
+		if(random()&1)x2*=-1;
+		if(random()&1)y2*=-1;
+		printf("%lld %lld %lld %lld\n",x1,y1,x2,y2);
+	}
 	return 0;
+
 }

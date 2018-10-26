@@ -15,16 +15,13 @@
 	
 	namespace zdw{
 		
-		class UFind{
-		private:
-			int *fa,size;
-			int gettop(int x){return fa[x]?fa[x]=gettop(fa[x]):x;}
-		public:
-			UFind(int SIZE=UFIND_SIZE){fa=(int *)malloc(sizeof(int)*(size=SIZE+1));clear();}
-			~UFind(){free(fa);}
-			void clear(){memset(fa,0,size);}
-			void merge(int x,int y){if(gettop(x)!=gettop(y))fa[gettop(x)]=gettop(y);}
-			bool check(int x,int y){return gettop(x)==gettop(y);}
+		struct UFind{
+			vector<int>V;
+			UFind(int sz=1e6+5){V.resize(sz,-1);}
+			void clear(){fill(V.begin(),V.end(),-1);}
+			int top(int x){return V[x]==-1?x:V[x]=top(V[x]);}
+			void unite(int x,int y){x=top(x);y=top(y);if(x!=y)V[x]=y;}
+			bool query(int x,int y){return top(x)==top(y);}
 		};
 	};
 	 

@@ -1,34 +1,18 @@
-#include <cstdio>
-#include <cstring>
-#include <cstdlib>
-
-
-namespace Data_B{
-	
-	const int MXT=10000;
-	const int MXN[2]={233,1000000};
-	
-	void print_data(int nd){
-		int T=MXT;
-		printf("%d\n",T);
-		while(T--){
-			
-			int a=random(1,MXN[nd<8?0:1]);
-			int b=random(1,MXN[nd<8?0:1]);
-			int c=random(1,MXN[nd<8?0:1]);
-			int d=random(1,MXN[nd<8?0:1]);
-			int e=random(1,MXN[nd<8?0:1]);
-			int f=random(1,MXN[nd<8?0:1]);
-			if(nd<3)c=d=0;
-			if(nd<6)e=f=0;
-			
-			printf("%d %d %d %d %d %d\n",a,b,c,d,e,f);
-		}
-	}
-	
-}
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
 
 int main(){
-	Data_B::print_data(now_data_num);
+	int T=1000,a,b,c,d,e,f,x=now_data_num<4?8:100;
+	printf("%d\n",T);
+	printf("1 0 0 0 1 0\n");
+	printf("1 0 0 1 0 0\n");
+	printf("1 0 0 0 0 1\n");
+	printf("1 1 1 1 1 1\n");
+	printf("1 2 3 3 2 1\n");
+	for(int i=6;i<=T;++i){
+		int a=random(1,x),b=random(1,x-a),c=x-a-b,d=random(1,x),e=random(1,x-d),f=x-d-e;
+		printf("%d %d %d %d %d %d\n",a,b,c,d,e,f);
+	}
 	return 0;
 }

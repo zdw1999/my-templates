@@ -1,0 +1,99 @@
+# depslib dependency file v1.0
+1538568420 source:d:\git_lib\my-templates\ckoj\contest_problem_data_spawner\run.cpp
+	<bits/stdc++.h>
+	<ext/pb_ds/assoc_container.hpp>
+	<zdwstd.h>
+	"spawn_system.h"
+
+1538288224 d:\git_lib\my-templates\ckoj\contest_problem_data_spawner\spawn_system.h
+	"Adata.h"
+	"Bdata.h"
+	"Cdata.h"
+	"Ddata.h"
+	"Edata.h"
+	"Fdata.h"
+	"Gdata.h"
+	"Hdata.h"
+	"Idata.h"
+	"Jdata.h"
+	"Kdata.h"
+	"A.h"
+	"B.h"
+	"C.h"
+	"D.h"
+	"E.h"
+	"F.h"
+	"G.h"
+	"H.h"
+	"I.h"
+	"J.h"
+	"K.h"
+
+1538492406 d:\git_lib\my-templates\ckoj\contest_problem_data_spawner\adata.h
+	<bits/stdc++.h>
+
+1538552120 d:\git_lib\my-templates\ckoj\contest_problem_data_spawner\bdata.h
+	<bits/stdc++.h>
+
+1538568535 d:\git_lib\my-templates\ckoj\contest_problem_data_spawner\cdata.h
+	<bits/stdc++.h>
+
+1538542793 d:\git_lib\my-templates\ckoj\contest_problem_data_spawner\ddata.h
+	<bits/stdc++.h>
+
+1538556107 d:\git_lib\my-templates\ckoj\contest_problem_data_spawner\edata.h
+	<bits/stdc++.h>
+	<ext/pb_ds/assoc_container.hpp>
+
+1534461959 d:\git_lib\my-templates\ckoj\contest_problem_data_spawner\fdata.h
+	<bits/stdc++.h>
+
+1527860682 d:\git_lib\my-templates\ckoj\contest_problem_data_spawner\gdata.h
+	<bits/stdc++.h>
+
+1526544110 d:\git_lib\my-templates\ckoj\contest_problem_data_spawner\hdata.h
+	<bits/stdc++.h>
+
+1526538781 d:\git_lib\my-templates\ckoj\contest_problem_data_spawner\idata.h
+	<bits/stdc++.h>
+
+1526540267 d:\git_lib\my-templates\ckoj\contest_problem_data_spawner\jdata.h
+	<bits/stdc++.h>
+
+1526543461 d:\git_lib\my-templates\ckoj\contest_problem_data_spawner\kdata.h
+	<ctime>
+	<cstdio>
+	<cstring>
+	<cstdlib>
+
+1538492290 d:\git_lib\my-templates\ckoj\contest_problem_data_spawner\a.h
+	<bits/stdc++.h>
+
+1538549961 d:\git_lib\my-templates\ckoj\contest_problem_data_spawner\b.h
+	<bits/stdc++.h>
+
+1538568545 d:\git_lib\my-templates\ckoj\contest_problem_data_spawner\c.h
+	<bits/stdc++.h>
+
+1538556947 d:\git_lib\my-templates\ckoj\contest_problem_data_spawner\d.h
+	<bits/stdc++.h>
+
+1538555287 d:\git_lib\my-templates\ckoj\contest_problem_data_spawner\e.h
+	<bits/stdc++.h>
+
+1534462106 d:\git_lib\my-templates\ckoj\contest_problem_data_spawner\f.h
+	<bits/stdc++.h>
+
+1527860434 d:\git_lib\my-templates\ckoj\contest_problem_data_spawner\g.h
+	<bits/stdc++.h>
+
+1538289312 d:\git_lib\my-templates\ckoj\contest_problem_data_spawner\h.h
+
+1538289386 d:\git_lib\my-templates\ckoj\contest_problem_data_spawner\i.h
+
+1538289407 d:\git_lib\my-templates\ckoj\contest_problem_data_spawner\j.h
+
+1538289358 d:\git_lib\my-templates\ckoj\contest_problem_data_spawner\k.h
+
+1530341581 d:\git_lib\my-templates\ckoj\contest_problem_data_spawner\bigint.h
+

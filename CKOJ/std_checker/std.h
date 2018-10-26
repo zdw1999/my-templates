@@ -1,77 +1,43 @@
-#include <stdio.h>
-#include <algorithm>
-#include <assert.h>
-#include <bitset>
-#include <cmath>
-#include <complex>
-#include <deque>
-#include <functional>
-#include <iostream>
-#include <limits.h>
-#include <map>
-#include <math.h>
-#include <queue>
-#include <set>
-#include <stdlib.h>
-#include <string.h>
-#include <string>
-#include <time.h>
-#include <unordered_map>
-#include <unordered_set>
-#include <vector>
+#include <bits/stdc++.h>
+#define ll long long
+#define ld long double
+#define ull unsigned long long
+#define eps 1e-10
 
-#pragma warning(disable:4996)
-#pragma comment(linker, "/STACK:336777216")
-using namespace std;
+#define qry(it,x) for(__typeof((x).begin()) it=(x).begin();it!=(x).end();++it)
+#define count_intbit(x) __builtin_popcount(x)
 
-#define mp make_pair
-#define all(x) (x).begin(), (x).end()
+template<class _Tp>inline _Tp abs(const _Tp &x){return x<0?-x:x;}
+template<class _Tp>inline _Tp max(const _Tp &a,const _Tp &b){return a>b?a:b;}
+template<class _Tp>inline _Tp min(const _Tp &a,const _Tp &b){return a<b?a:b;}
+template<class _Tp>inline void inc(_Tp &a,const _Tp &b){if(a<b)a=b;}
+template<class _Tp>inline void dec(_Tp &a,const _Tp &b){if(a>b)a=b;}
+template<class _Tp>inline void swp(_Tp &a,_Tp &b){_Tp c=a;a=b;b=c;}
+template<class _Tp>inline bool operator ==(const _Tp &A,const _Tp &B){return !memcmp(&A,&B,sizeof(_Tp));}
 
-typedef tuple<int, int, int> t3;
-typedef pair <int, int> pii;
-typedef pair <ll, ll> pll;
-typedef pair <ll, int> pli;
-typedef pair <db, db> pdd;
+#define N 200005
+ll A[N];
+std::priority_queue<ll>Q;
 
-int IT_MAX = 1 << 17;
-const ll MOD = 998244353;
-const int INF = 0x3f3f3f3f;
-const ll LL_INF = 0x3f3f3f3f3f3f3f3f;
-const db PI = acos(-1);
-const db ERR = 1e-10;
-#define szz(x) (int)(x).size()
-#define rep(i, n) for(int i=0;i<n;i++)
-#define Se second
-#define Fi first
-
-pll in[200050];
-
-map <ll, ll> Mx;
-int main() {
-	memset(in,0,sizeof(in));
-	Mx.clear();
-	ll N, A, B, i, j;
-	scanf("%lld %lld %lld", &N, &A, &B);
-	for (i = 1; i <= N; i++) {
-		ll t1, t2, t3;
-		scanf("%lld %lld %lld", &t1, &t2, &t3);
-
-		ll v1 = t2 * A - t3;
-		ll v2 = t2 + t3 * A;
-		in[i] = pll(v1, v2);
-	}
-	sort(in + 1, in + N + 1);
-
-	ll ans = 0;
-	int st = 1;
-	for (i = 1; i <= N; i++) {
-		if (i == N || in[i].first != in[i + 1].first) {
-			int en = i;
-			Mx.clear();
-			for (j = st; j <= en; j++) Mx[in[j].second]++;
-			for (j = st; j <= en; j++) ans += (en - st + 1) - Mx[in[j].second];
-			st = en + 1;
-		}
-	}
-	return !printf("%lld\n", ans);
+int main(){
+    memset(A,0,sizeof(A));
+    ll n,k,l,i,j,ans=0;
+    while(!Q.empty())Q.pop();
+    scanf("%lld%lld%lld",&n,&k,&l);
+    for(i=1;i<=n*k;++i)
+        scanf("%lld",A+i);
+    std::sort(A+1,A+n*k+1);
+    for(i=1;i<=n*k;++i){
+        if(A[i]-A[1]<=l)Q.push(A[i]);
+        else break;
+    }ll tt=n*k-i+1;
+    if(Q.size()<n)return !printf("0\n");
+    while(n--){
+        if(tt>=k-1)ans+=Q.top(),Q.pop(),tt-=k-1;
+        else {
+            tt=k-1-tt;
+            while(tt--)Q.pop();
+            ans+=Q.top();
+        }
+    }return !printf("%lld\n",ans);
 }

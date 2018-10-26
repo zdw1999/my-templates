@@ -1,38 +1,57 @@
-#include <bits/stdc++.h>
-#define ll long long
-#define ld long double
-#define ull unsigned long long
-#define eps 1e-10
+#include<bits/stdc++.h>
+using namespace std;
+ll a[100010];
+int main()
+{
+    memset(a,0,sizeof(a));
+    int n,k;
+    ll l;
+    cin>>n>>k>>l;
+    for(int i=1;i<=n*k;i++)
+    {
+        scanf("%lld",&a[i]);
+    }
+    sort(a+1,a+n*k+1);
+    priority_queue<ll> bushidi;
+    priority_queue<ll> keyizuodi;
+    keyizuodi.push(a[1]);
+    for(int i=2;i<=n*k;i++)
+    {
+        if(a[i]<=a[1]+l)
+        {
+            keyizuodi.push(a[i]);
+        }
+        else
+        {
+            bushidi.push(a[i]);
+        }
+    }
+    ll ans=0;
+    int jl=0;
+    while(!keyizuodi.empty())
+    {
+        if(bushidi.size()<(k-1))
+        {
+            int tmp=keyizuodi.top();keyizuodi.pop();
+            bushidi.push(tmp);
+            continue;
+        }
+        else
+        {
+            for(int i=1;i<=k-1;i++)
+            {
+                bushidi.pop();
 
-#define qry(it,x) for(__typeof((x).begin()) it=(x).begin();it!=(x).end();++it)
-#define count_intbit(x) __builtin_popcount(x)
+            }
+            jl++;
+            ans+=keyizuodi.top();
+                keyizuodi.pop();
+        }
+    }
+    if(jl<n) return 0*puts("0");
+    else {
+        cout<<ans<<endl;
+    }
 
-template<class _Tp>inline _Tp abs(const _Tp &x){return x<0?-x:x;}
-template<class _Tp>inline _Tp max(const _Tp &a,const _Tp &b){return a>b?a:b;}
-template<class _Tp>inline _Tp min(const _Tp &a,const _Tp &b){return a<b?a:b;}
-template<class _Tp>inline void inc(_Tp &a,const _Tp &b){if(a<b)a=b;}
-template<class _Tp>inline void dec(_Tp &a,const _Tp &b){if(a>b)a=b;}
-template<class _Tp>inline void swp(_Tp &a,_Tp &b){_Tp c=a;a=b;b=c;}
-template<class _Tp>inline bool operator ==(const _Tp &A,const _Tp &B){return !memcmp(&A,&B,sizeof(_Tp));}
-
-#define N 1000005
-struct p{ll x,y;p(){}}P[N];
-std::map<ll,ll>M1,M2;
-ll A[N],n,a,b,t,ans;
-
-int main(){
-	M1.clear(); M2.clear();
-	memset(P,0,sizeof(P));
-	scanf("%lld%lld%lld",&n,&a,&b);
-	for(int i=1;i<=n;++i){
-		scanf("%lld%lld%lld",&t,&P[i].x,&P[i].y);
-		A[i]=a*P[i].x-P[i].y;
-	}
-	for(int i=1;i<=n;++i){
-		++M1[P[i].x*(ll)1e9+P[i].y];
-		++M2[A[i]];
-	}
-	for(int i=1;i<=n;++i)
-		ans+=M2[A[i]]-M1[P[i].x*(ll)1e9+P[i].y];
-	return !printf("%lld\n",ans);
+    return 0;
 }

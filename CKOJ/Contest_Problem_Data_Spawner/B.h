@@ -1,28 +1,23 @@
-#include <bits/stdc++.h>
-
-namespace Solve_B{
-	
-	int T,ans,x,y;
-	
-	double abs(double x){return x<0?-x:x;}
-	double max(double x,double y){return x>y?x:y;}
-	int culc(int x,int y){
-		if(x<1||x>10||y<1||y>10)return 0;
-		return 5.6-max(abs(x-5.5),abs(y-5.5));
-	}
-	
-	void Solve(){
-		for(std::cin>>T,ans=0;T--;)
-			scanf("%d%d",&x,&y),ans+=culc(x,y);
-		printf("%d\n",ans);
-	}
-	
-}
+#include<bits/stdc++.h>
+#define ll long long
+using namespace std;
 
 int main(){
-	
-	Solve_B::Solve();
-	
-	return 0;
-	
+    ll T,a,b,c,d,e,f;
+    cin>>T;
+    while(T--){
+		scanf("%lld%lld%lld%lld%lld%lld",&a,&b,&c,&d,&e,&f);
+		ll ans=0,x;
+		ans+=x=min(b,d); b-=x; d-=x;
+		ans+=x=min(c,e); c-=x; e-=x;
+		ans+=x=min(a,f); a-=x; f-=x;
+
+		x=min(a,d); a-=x; d-=x;
+		x=min(b,e); b-=x; e-=x;
+		x=min(c,f); c-=x; f-=x;
+
+		ans-=a+b+c;
+		printf("%lld\n",ans);
+    }
+    return 0;
 }
