@@ -1,7 +1,9 @@
-#ifndef __NO_ZDW_STD_DEF__
+#ifndef MY_STD_H
+#define MY_STD_H
 
-	#ifndef MY_STD_H
-	#define MY_STD_H
+	#include <bits/stdc++.h>
+
+	#ifndef __NO_ZDW_STD_DEF__
 
 		/******************************************
 
@@ -60,7 +62,7 @@
 			#define errmsg(...) fprintf(stderr,__VA_ARGS__)
 		#endif
 
-
+/*
 		namespace zdw{
 
 			#define tpl template
@@ -76,7 +78,22 @@
 			#undef tpl
 
 		}
-
+*/
 	#endif
+	namespace zdw{
 
+		std::vector<std::string> split(std::string s,char c=' '){
+			std::vector<std::string>res;
+			std::string tmp="";
+			for(auto &i:s){
+				if(i!=c)tmp+=i;
+				else {
+					res.push_back(tmp);
+					tmp="";
+				}
+			}
+			return res;
+		}
+
+	}
 #endif

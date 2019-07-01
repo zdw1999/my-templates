@@ -7,16 +7,18 @@
 **************************************/
 
 #ifndef MY_UFIND_H
-	
+
 	#define MY_UFIND_H
+	#include <vector>
+
 	#ifndef UFIND_SIZE
 		#define UFIND_SIZE 100000
 	#endif
-	
+
 	namespace zdw{
-		
+
 		struct UFind{
-			vector<int>V;
+			std::vector<int>V;
 			UFind(int sz=1e6+5){V.resize(sz,-1);}
 			void clear(){fill(V.begin(),V.end(),-1);}
 			int top(int x){return V[x]==-1?x:V[x]=top(V[x]);}
@@ -24,5 +26,5 @@
 			bool query(int x,int y){return top(x)==top(y);}
 		};
 	};
-	 
+
 #endif

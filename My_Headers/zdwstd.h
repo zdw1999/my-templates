@@ -13,18 +13,7 @@
 	#define __ZDW_LIB_VER__ 0.11
 
 	#pragma comment(linker, "/STACK:268435456")
-
-	#ifndef __NO_STD_HEADER__
-
-		#include <cmath>
-		#include <ctime>
-		#include <cstdio>
-		#include <cstring>
-		#include <cstdlib>
-		#include <iostream>
-		#include <algorithm>
-
-	#endif
+	#include <bits/stdc++.h>
 
 	#include <My_Std.h>
 
@@ -32,12 +21,15 @@
 	#include <My_Random.h>
 	#include <My_Hash.h>
 	#include <My_Math.h>
+	#include <My_Graph.h>
 	#include <My_UFind.h>
 	#include <My_Treap.h>
+	#include <My_LCT.h>
+	#include <My_SAM.h>
 	#include <My_String.h>
 	#include <My_FastIO.h>
 	#include <My_Console.h>
-	//#include <My_GameEngine.h> //Not done yet.
+	#include <My_GameEngine.h> //Not done yet.
 	#include <My_Set.h>
 	#include <My_Heap.h>
 

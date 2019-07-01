@@ -2,9 +2,9 @@
 
 	Program: Fast I/O System
 	Author: zdw1999
-	Last Update: 2018-10-11 9:00
-	
-	Usage: 
+	Last Update: 2018-12-15 22:15
+
+	Usage:
 		init_num_table();                    //at begin
 		(FastInput) IN.file_init(stdin);     //at begin
 		(FastInput) OUT.flush(stdout);       //at end
@@ -12,9 +12,9 @@
 *************************************************/
 
 #ifndef MY_FASTIO_H
-	
+
 	#define MY_FASTIO_H
-		
+
 	namespace zdw{
 
 		void readint(int &x){
@@ -44,6 +44,48 @@
 			while(w&&w<'0'||w>'9')w=*++s;
 			if(!w){x=-1;return;} c=*(s-1); x=w-'0';
 			while((w=*++s)&&w>='0'&&w<='9')x=(x<<3)+(x<<1)+w-'0';
+			if(c=='-')x=-x;
+		}
+
+		void readintmod(int &x,const int &ha){
+			char s=getchar(),c=0;
+			while(~s&&s<'0'||s>'9')c=s,s=getchar(); x=s-'0';
+			while(~(s=getchar())&&s>='0'&&s<='9'){
+				x=(x<<3)+(x<<1)+s-'0';
+				if(x>2e8)x%=ha;
+			}
+			if(c=='-')x=-x;
+		}
+
+		void readllmod(ll &x,const ll &ha){
+			char s=getchar(),c=0;
+			while(~s&&s<'0'||s>'9')c=s,s=getchar(); x=s-'0';
+			while(~(s=getchar())&&s>='0'&&s<='9'){
+				x=(x<<3)+(x<<1)+s-'0';
+				if(x>9e17)x%=ha;
+			}if(x>=ha)x%=ha;
+			if(c=='-')x=-x;
+		}
+
+		void _readintmod(char *&s,int &x,const int &ha){
+			char w=*s,c;
+			while(w&&w<'0'||w>'9')w=*++s;
+			if(!w){x=-1;return;} c=*(s-1); x=w-'0';
+			while((w=*++s)&&w>='0'&&w<='9'){
+				x=(x<<3)+(x<<1)+w-'0';
+				if(x>2e8)x%=ha;
+			}
+			if(c=='-')x=-x;
+		}
+
+		void _readllmod(char *&s,ll &x,const ll &ha){
+			char w=*s,c;
+			while(w&&w<'0'||w>'9')w=*++s;
+			if(!w){x=-1;return;} c=*(s-1); x=w-'0';
+			while((w=*++s)&&w>='0'&&w<='9'){
+				x=(x<<3)+(x<<1)+w-'0';
+				if(x>9e17)x%=ha;
+			}if(x>=ha)x%=ha;
 			if(c=='-')x=-x;
 		}
 
@@ -145,8 +187,8 @@
 
 		class FastInput{
 		public:
-			static const int MXL=83886080; //缓冲区大小(80MB)
-			char *buf,*tt; int sz;         //由于判正负需要判上一位故预留1字节
+			static const int MXL=83886080;
+			char *buf,*tt; int sz;
 
 			FastInput(int SZ=MXL){buf=(char*)malloc((sz=SZ)+1);tt=buf+1;*buf=*tt=0;}
 			~FastInput(){free(buf);}
@@ -158,6 +200,8 @@
 
 			void readint(int &x){_readint(tt,x);}
 			void readll(ll &x){_readll(tt,x);}
+			void readintmod(int &x,const int &ha){_readintmod(tt,x,ha);}
+			void readllmod(ll &x,const ll &ha){_readllmod(tt,x,ha);}
 			char getchar(){return *tt?*tt++:-1;}
 			void getchar(char &c){c=(*tt?*tt++:-1);}
 			void getstr(char *s){
@@ -176,7 +220,7 @@
 
 		class FastOutput{
 		public:
-			static const int MXL=83886080; //缓冲区大小(80MB)
+			static const int MXL=31457280;
 			char *buf,*tt; int sz;
 
 			FastOutput(int SZ=MXL){buf=(char*)malloc(sz=SZ);tt=buf;}
