@@ -3,9 +3,9 @@
 using namespace std;
 
 int main(){
-	int n=1000;
-	printf("%d\n",n);
-	for(int i=1;i<=n;++i)
-		printf("%d ",(int)random(1,2000));
-	return 0;
+	int a=random(8e8,1e9);
+	int b=random(8e8,1e9);
+	if(now_data_num==3)b=a;
+	if(now_data_num==4)b=a=1;
+	return !printf("%d %d\n",a,b);
 }

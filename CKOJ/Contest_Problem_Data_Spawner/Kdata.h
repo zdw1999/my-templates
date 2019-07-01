@@ -4,18 +4,36 @@
 #include <cstdlib>
 
 int main(){
-    int T=40;
-    printf("%d\n",T);
-    while(T--){
-        int n=T<10?T<4?20000:2000:200;
-        printf("%d\n",n);
-        for(int i=2;i<=n;++i)
-            printf(T<2?"%d %d\n":"%llu %d\n",T<2?i-1:random(1,i-1),i);
-        for(int i=1;i<=n;++i)
-            printf("%llu %llu\n",random(1,5),random(1,1000000000));
-        int q=n*3/2;
-        printf("%d\n",q);
-        while(q--)
-            printf("%llu %llu\n",random(1,n),random(1,100000));
-    }
+	int cs=now_data_num,n=10000;
+	if(cs==1){
+		printf("%d\n",n=500);
+		for(int i=1;i<=n;++i){
+			for(int j=1;j<=i;++j)
+				putchar('A');
+			puts("");
+		}
+	}else if(cs<5){
+		printf("%d\n",n);
+		for(int i=1;i<=n;++i){
+			for(int j=i;j;j/=cs)
+				putchar('A'+j%cs);
+			puts("");
+		}
+	} else if(cs<7){
+		printf("%d\n",5); n=100000; cs=2;
+		for(int i=1;i<=5;++i,++cs){
+			for(int j=1;j<=n;++j)
+				putchar('A'+random(1,cs)-1);
+			puts("");
+		}
+	} else {
+		printf("%d\n",50); n=10000; cs=2;
+		for(int i=1;i<=50;++i,++cs){
+			if(cs>26)cs=26;
+			for(int j=1;j<=n;++j)
+				putchar('A'+random(1,cs)-1);
+			puts("");
+		}
+	}
+
 }

@@ -1,38 +1,42 @@
 #include <bits/stdc++.h>
 #define ll long long
 
-std::map<int,bool>M[200005];
-
 int main(){
 
+	if(now_data_num==1){
+		puts("2 15");
+		puts("111111111111111");
+		puts("000000000000000");
+	}
 
-    int n=199990,m=200000;
-    printf("%d %d\n",n,m);
-    for(int i=1;i<=m-100;++i){
-        int s=random(1,n-100),t=random(1,n-100);
-        while(s==t||M[s][t]||M[t][s])
-            t=random(1,n-100);
-        int v=random(0,0x3fffffff);
-        printf("%d %d %d\n",s,t,v);
-    }
-    for(int i=1;i<=100;++i){
-        int s=random(n-99,n),t=random(n-99,n);
-        while(s==t||M[s][t]||M[t][s])
-            t=random(n-99,n);
-        int v=random(0,0x3fffffff)|233;
-        printf("%d %d %d\n",s,t,v);
-    }
-	int T=100000;
-	printf("%d\n",T);
-	for(int i=1;i<=100;++i){
-        int x=random(n-99,n),y=random(n-99,n);
-        printf("%d %d\n",x,y);
+	if(now_data_num==2){
+		puts("4 15");
+		puts("111111110000000");
+		puts("000000001111111");
 	}
-    T-=100;
-	while(T--){
-        int x=random(1,n),y=random(1,n);
-        printf("%d %d\n",x,y);
+
+	if(now_data_num==3){
+		puts("1 7");
+		puts("111111110000000");
+		puts("000000001111111");
 	}
-	return 0;
+
+	if(now_data_num==4){
+		puts("1 8");
+		puts("111111110000000");
+		puts("000000001111111");
+	}
+
+	if(now_data_num==5){
+		puts("3 7");
+		puts("101010101010101");
+		puts("010101010101010");
+	}
+	//scanf(s) but for i=1,n
+	if(now_data_num==6){
+		puts("1 14");
+		puts("111111111111111");
+		puts("000000000000000");
+	}
 
 }

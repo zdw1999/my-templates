@@ -1,62 +1,104 @@
-/*
+#include<bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+const int M=50;
+const int N=1e5+5;
+const int ha=1e9+7;
+const unsigned Z=(1<<8)-1;
+const unsigned ZZ=(1<<24)-1;
+//è®¾å­—ç¬¦ä¸²æ€»é•¿10w, åˆ™æ¯ä¸ªå­—ç¬¦æœ€å¤šè½¬ç§»50æ¬¡,æœ€å¤šå…±500wä¸ªåˆ›å»ºèŠ‚ç‚¹æ“ä½œ
+//500w*(26*8(4)+4*3)=110000(58000)w = 550MB æ‰€ä»¥ç”¨mapåŽ‹ç¼©ç©ºé—´...
+//500w*60=30000w  å¥½åƒä¹Ÿæ²¡å°‘å¤šå°‘,è¿˜å¯èƒ½æµªè´¹æ›´å¤šå¸¸æ•°ç©ºé—´
+//ç„¶è€Œä¹‹å‰æˆ‘ä»¬å¯ä»¥ç”¨ä¸€ä¸ªchar+shortå¼ºè¡Œå­˜500w(å®žé™…è¶³å¤Ÿäº†)
+//äºŽæ˜¯500w*(26*3+4*3)=45000w = 429MB, å¤Ÿç”¨äº†(æ¯’ç˜¤!)
+
+//åšæ³•2: ç¦»çº¿, å°†æ‰€æœ‰ä»·å€¼ä¸²å»ºACè‡ªåŠ¨æœº
+
+struct trie_node{// tot_size=48+4*3=60 char
+	//map<char,trie_node *>son;//size = 48, long long=8
+	unsigned char son[26*3];
+	int v1,v2,len;
+	inline unsigned getson(const char &c){
+		return (unsigned)son[c*3]<<16|(unsigned)son[c*3+1]<<8|son[c*3+2];
+	}
+	inline void setson(const char &c,const unsigned &x){
+		son[c*3]=x>>16;
+		son[c*3+1]=x>>8;
+		son[c*3+2]=x;
+	}
+	trie_node(){v1=v2=len=0;}
+};
+
+struct trie{
+	trie_node *A;
+	unsigned p,Q[M];
+	trie(){
+		A=(trie_node *)malloc(N*M*sizeof(trie_node));
+		clear();
+	}
+	~trie(){free(A);}
+	void clear(){
+		memset(A,0,N*M*sizeof(trie_node));
+		memset(Q,0,sizeof(Q)); p=1;
+	}
+	inline unsigned getson(const unsigned &u,unsigned char c){
+		c-='a';
+		unsigned s=A[u].getson(c);
+		if(!s)A[u].setson(c,s=++p);
+		A[s].len=A[u].len+1;
+		return s;
+	}
+	inline int modify(char *s,const int &v){
+		unsigned t=1;
+		while(*s)t=getson(t,*s++);
+		int res=v-A[t].v1;
+		A[t].v1=v;
+		return res*A[t].v2;
+	}
+	inline int add(char *S){
+		int res=0;
+		while(*S){
+			for(int i=0;i<M;++i){
+				if(!Q[i]){
+					Q[i]=getson(1,*S);
+					res+=A[Q[i]].v1;
+					A[Q[i]].v2++;
+					break;
+				}
+				if(Q[i].len==M)
+					Q[i]=getson(1,*S);
+				else Q[i]=getson(Q[i],*S);
+				res+=A[Q[i]].v1;
+				A[Q[i]].v2++;
+			}
+			++S;
+		}
+		return res;
+	}
+};
 
 
-¶¨ÒåÒ»ÌõÂ·¾¶µÄµÀÂ·Îª¸ÃÂ·¾¶ÉÏËùÓÐ±ßµÄ"Óë"
-ÎÊA->BµÄ×î¶ÌÂ·
-
-2<=n<=200000 , 0<=m<=200000
-T<=100000
-
-·Ö±ð¼ÆËãÃ¿¸öÁªÍ¨¿éÄÚµÄËùÓÐ±ßµÄÓë¼´¿É
-×¢ÒâÌØÅÐs==tÊ±dis==0
-
-*/
-#include <bits/stdc++.h>
-const int N=200005;
-
-struct edge{int f,t,v;edge(){}}E[N];
-std::vector<int>G[N];
-int C[N],ctot,n,m,T,s,t;
-int ans[N],cnt;
-/*
-void dfs(int u){
-    printf("%d %d\n",C[u],u);
-    if(C[u])return; C[u]=ctot;
-    for(auto v:G[u])
-        if(!C[v])dfs(v);
-}*/
-
-int Q[N],l,r;
-void bfs(int u){
-    Q[l=r=0]=u;
-    while(l<=r){
-        u=Q[l++];
-        for(auto &v:G[u])
-            if(!C[v])C[Q[++r]=v]=ctot;
-    }
-}
+char s[1000055];
+int r,Q,x,ans;
 
 int main(){
-    scanf("%d%d",&n,&m);
-    for(int i=1,x,y,z;i<=m;++i){
-        scanf("%d%d%d",&x,&y,&z);
-        E[i].f=x; E[i].t=y; E[i].v=z;
-        G[x].push_back(y);
-        G[y].push_back(x);
-    }
-    for(int i=1;i<=n;++i)
-        if(!C[i]){
-            ans[++ctot]=0x7fffffff;
-            bfs(i);
-        }
-    for(int i=1;i<=m;++i)
-        //C[E[i].f]==C[E[i].t]
-        ans[C[E[i].f]]&=E[i].v;
-    scanf("%d",&T);
-    while(T--){
-        scanf("%d%d",&s,&t);
-        if(s==t)printf("0\n");
-        else if(C[s]!=C[t])printf("-1\n");
-        else printf("%d\n",ans[C[s]]);
-    }return 0;
+	trie T;
+	scanf("%d",&Q); r=0;
+	while(Q--){
+		scanf("%d",&x);
+		if(x==3){//query
+			printf("%d\n",ans);
+		} else {
+			scanf("%s",s+r);
+			if(x==1){
+				scanf("%d",&x);
+				ans+=T.modify(s+r,x);
+			} else {
+				ans+=T.add(s+r);
+				while(s[r])++r;
+			}
+		}
+	}
+	return 0;
 }

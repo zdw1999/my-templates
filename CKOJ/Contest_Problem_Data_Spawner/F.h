@@ -1,38 +1,32 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 #define ll long long
 using namespace std;
 
-const int N=200005;
-int A[N],n,Q,a;
-vector<int>P[N];
+const int N=5e5+5;
+zdw::StringDoubleHash H(N);
+zdw::StringDoubleHashResult R[N];
 char s[N];
-
-void updata(int x,int v){for(auto &i:P[x])A[i]+=v;}
 
 int main(){
 
-	cin>>n>>Q;
-	scanf("%s",s+1);
-
-	memset(A,0,sizeof(A));
-	for(int j=0;j<N;++j)
-		P[j].clear();
-	for(int i=1;i<N;++i){
-		for(int j=i;j<N;j+=i){
-			P[j].push_back(i);
-			if(s[j]=='1')++A[i];
-		}
+	int n,Q,a,b,x,y,l,r,m;
+	scanf("%d%d",&n,&Q);
+	for(int i=1;i<=n;++i){
+		scanf("%s",s);
+		R[i].clear();
+		R[i]=H.culc_hash(s,strlen(s));
 	}
 
 	while(Q--){
-		scanf("%d",&a);
-		if(a==1){
-			scanf("%d",&a); s[a]^=1;
-			updata(a,s[a]&1?1:-1);
-		} else if(a==2){
-			scanf("%d",&a);
-			printf("%d\n",A[a]);
+		scanf("%d%d%d%d",&a,&x,&b,&y); --x; --y;
+		l=0,r=min(R[a].len-x,R[b].len-y),m;
+		while(r>0&&l<r){
+			m=l+r+1>>1;
+			//errmsg("%lld %lld\n\n",H.gethash(R[a],x,x+m-1),H.gethash(R[b],y,y+m-1));
+			if(H.gethash(R[a],x,x+m-1)!=H.gethash(R[b],y,y+m-1))r=m-1;
+			else l=m;
 		}
+		printf("%d\n",l);
 	}
 
 	return 0;

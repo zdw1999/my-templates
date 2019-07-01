@@ -1,4 +1,4 @@
-#define PRIME_LIST_LIMIT 1000000
+#define PRIME_LIST_LIMIT 100
 #include <bits/stdc++.h>
 //#include <bits/extc++.h>
 using namespace std;
@@ -17,6 +17,8 @@ using zdw::random;
 #include "spawn_system.h"
 char bufin[]="___.in",bufout[]="___.out";
 
+const int data_cnt[26]={10,5,12,20,10,13, 6,8,1,20,8};
+
 int main(){
 	//freopen(".err","w",stderr);
 
@@ -24,13 +26,13 @@ int main(){
 	srand(19990630+time(0));
 	long st=clock();
 #ifndef TEST
-	for(char c='E';c<='E';++c){
+	for(char c='G';c<='K';++c){
 		bufin[0]=bufout[0]=c;
 #ifdef USE_OLD_DATA
 		fprintf(stderr,"Data of %c skipped.\n",c);
 #else
 		fprintf(stderr,"Data of %c spawning...\n",c);
-		for(int cc=0;cc<=9;++cc){
+		for(int cc=1;cc<=data_cnt[c-'A'];++cc){
 			now_data_num=cc;
 			bufin[1]=cc/10+'0';
 			bufin[2]=cc%10+'0';
@@ -40,7 +42,7 @@ int main(){
 		fprintf(stderr,"Data of %c done.\nTime used: %dms\n",c,int(clock()-st));
 #endif
 		fprintf(stderr,"Program %c's std is running...\n",c);
-		for(int cc=0;cc<=9;++cc){
+		for(int cc=1;cc<=data_cnt[c-'A'];++cc){
 			now_data_num=c;
 			bufin[1]=bufout[1]=cc/10+'0';
 			bufin[2]=bufout[2]=cc%10+'0';

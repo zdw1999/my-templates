@@ -2,22 +2,27 @@
 #define ll long long
 using namespace std;
 
+const int N=105;
+
 int main(){
-    ll T,a,b,c,d,e,f;
-    cin>>T;
-    while(T--){
-		scanf("%lld%lld%lld%lld%lld%lld",&a,&b,&c,&d,&e,&f);
-		ll ans=0,x;
-		ans+=x=min(b,d); b-=x; d-=x;
-		ans+=x=min(c,e); c-=x; e-=x;
-		ans+=x=min(a,f); a-=x; f-=x;
+	map<int,int>M;
+	vector<int>ans;
+	int n,m,x;
+	scanf("%d",&n);
+	while(n--){
+		scanf("%d",&x);
+		++M[-x];
+	}
+	while(m>0&&!M.empty()){
+		auto it=M.begin(); ++m;
+		while(it!=M.end()&&m>0){
+			ans.push_back(it->first); --m;
+			if(it->second==1)M.erase(it++);
+			else it->second-=1;
+		}
+	}
+	if(m>0)return !printf("-1");
+	for(auto &i:ans)printf("%d ",-i);
 
-		x=min(a,d); a-=x; d-=x;
-		x=min(b,e); b-=x; e-=x;
-		x=min(c,f); c-=x; f-=x;
-
-		ans-=a+b+c;
-		printf("%lld\n",ans);
-    }
-    return 0;
+	return 0;
 }

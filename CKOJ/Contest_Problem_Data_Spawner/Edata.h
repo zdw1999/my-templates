@@ -1,28 +1,23 @@
 #include <bits/stdc++.h>
-#include <ext/pb_ds/assoc_container.hpp>
-#define ll long long
-using namespace __gnu_pbds;
 using namespace std;
 
+void make_data(int n,int l,int r){
+	printf("%d\n",n);
+	while(n--)
+		printf("%d\n",(int)random(l,r));
+}
 
 int main(){
-
-	//tree<int,null_type,less<int>,rb_tree_tag,tree_order_statistics_node_update>M;
-	int T=6;
-	int n=now_data_num<6?1e3:1e5,Q=n,QQ=min(10000,Q);
-	printf("%d\n",T);
-	while(T--){
-		printf("%d %d\n",n,Q);
-		for(int w=1,L=n/2,R=n/2;w<=Q;++w){
-			int l=random(1,n),r=random(l,n);
-			if(T==1)l=r=w;
-			if(T==2)l=w&1?L--:L,r=w&1?R:R++;
-			if(l<=0)l=1; if(r>n)r=n;
-			int c=random(1,1e6);
-			printf("%d %d %d\n",l,r,c);
-		}
-		printf("%d\n",QQ);
-		for(int i=1;i<=QQ;++i)
-			printf(i==QQ?"%d\n":"%d ",(int)random(1,n));
+	if(now_data_num<=4){
+		if(now_data_num==1)make_data(1000,0,0);
+		if(now_data_num==2)make_data(1000,0,999);
+		if(now_data_num==3)make_data(1000,999,999);
+		if(now_data_num==4)make_data(1000,233,555);
+	} else {
+		if(now_data_num==5)make_data(100000,0,0);
+		if(now_data_num==6)make_data(100000,0,99999);
+		if(now_data_num==7)make_data(100000,99999,99999);
+		if(now_data_num==8)make_data(100000,23333,71537);
+		if(now_data_num>8)make_data(100000,random(0,20000),random(70000,99999));
 	}
 }
